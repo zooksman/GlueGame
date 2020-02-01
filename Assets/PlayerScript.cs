@@ -79,7 +79,7 @@ public class PlayerScript : MonoBehaviour
     {
         directionY += horizontalSpeed * Input.GetAxis("Mouse X");
         directionX += verticalSpeed * Input.GetAxis("Mouse Y");
-        transform.rotation = Quaternion.Euler(directionX, -directionY, 0);
+        transform.rotation = Quaternion.Euler(-directionX, directionY, 0);
     }
 
     private void ShootGlue()
