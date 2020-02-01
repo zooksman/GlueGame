@@ -92,7 +92,7 @@ public class PlayerScript : MonoBehaviour
 
     private void ReadyNewGlue()
     {
-        if (glue[currentGlue + 1] != null)
+        if (currentGlue < glue.Length - 1)
             currentGlue++;
         else
             currentGlue = 0;
