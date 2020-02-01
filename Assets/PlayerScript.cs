@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
     bool leftClicking; // continually remains true until click is released
 
     Rigidbody rb;
-    const float VELOCITY_MODIFIER = 50f;
+    const float VELOCITY_MODIFIER = 100f;
     public float horizontalSpeed = 1.8f;
     public float verticalSpeed = 1.8f;
     float directionX;
@@ -84,12 +84,15 @@ public class PlayerScript : MonoBehaviour
 
     private void ShootGlue()
     {
+        print("current glue: " + currentGlue);
         glueS[currentGlue].ShootSelf(transform.localRotation * Vector3.forward);
-        PropelBackward(transform.localRotation * (-Vector3.forward * VELOCITY_MODIFIER));
+        PropelBackward(transform.localRotation * (-Vector3.forward * VELOCITY_MODIFIER * glueBuildup));
+        ReadyNewGlue();
     }
 
     private void PropelBackward(Vector3 direction)
     {
+        rb.velocity = new Vector3(0,0,0);
 		rb.AddForce(direction);
     }
 
@@ -103,10 +106,11 @@ public class PlayerScript : MonoBehaviour
 
     private void ReadyNewGlue()
     {
-        if (glue[currentGlue] != null)
+        if (currentGlue < glue.Length - 1)
             currentGlue++;
         else
             currentGlue = 0;
+        glueBuildup = MINIMUM_GLUE_BUILDUP;
     }
 
     private void OnCollisionEnter(Collision other)
