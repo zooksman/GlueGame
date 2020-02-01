@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5503881024188085567}
   - component: {fileID: 5503881024188085564}
   - component: {fileID: -4655701115853294671}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389be02b714221f42b305fcd9fa1adb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beingHeld: 0
+  hit: {fileID: 0}
 --- !u!54 &-4655701115853294671
 Rigidbody:
   m_ObjectHideFlags: 0
