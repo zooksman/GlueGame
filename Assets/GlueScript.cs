@@ -7,10 +7,13 @@ public class GlueScript : MonoBehaviour
     Rigidbody rb;
     public const float VELOCITY_MODIFIER = 4f;
     float size;
+    public bool beingHeld;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (beingHeld == false)
+            transform.position = new Vector3(300f,300f,300f);
         rb = GetComponent<Rigidbody>();
         size = 0.2f; // same as minimum constant on PlayerScript
     }
