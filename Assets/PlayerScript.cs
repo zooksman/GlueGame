@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject[] glue;
     GlueScript[] glueS;
+    int currentGlue;
 
     bool active;
     float cooldown;
@@ -34,7 +35,7 @@ public class PlayerScript : MonoBehaviour
         if (rightClicking == true)
         {
             BuildupGlue();
-            glueS.SetSize(glueBuildup);
+            glueS[currentGlue].SetSize(glueBuildup);
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -49,7 +50,7 @@ public class PlayerScript : MonoBehaviour
 
     private void ShootGlue()
     {
-        glueS.ShootSelf(transform.localRotation * Vector3.forward, transform.position + transform.forward);
+        glueS[currentGlue].ShootSelf(transform.localRotation * Vector3.forward, transform.position + transform.forward);
         PropelBackward();
     }
 
@@ -67,7 +68,10 @@ public class PlayerScript : MonoBehaviour
 
     private void ReadyNewGlue()
     {
-        
+        if (glue[currentGlue] != null)
+            currentGlue++;
+        else
+            currentGlue = 0;
     }
 
 }
