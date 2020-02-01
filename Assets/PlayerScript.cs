@@ -76,6 +76,7 @@ public class PlayerScript : MonoBehaviour
     {
         glueS[currentGlue].ShootSelf(transform.localRotation * Vector3.forward);
         PropelBackward(transform.localRotation * -Vector3.forward);
+        ReadyNewGlue();
     }
 
     private void PropelBackward(Vector3 direction)
@@ -92,7 +93,7 @@ public class PlayerScript : MonoBehaviour
 
     private void ReadyNewGlue()
     {
-        if (glue[currentGlue] != null)
+        if (glue[currentGlue + 1] != null)
             currentGlue++;
         else
             currentGlue = 0;
