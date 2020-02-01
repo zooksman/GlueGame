@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     bool active;
     float cooldown;
     public const float BASE_COOLDOWN = 0.5f;
-    bool rightClicking; // continually remains true until click is released
+    bool leftClicking; // continually remains true until click is released
 
     const float VELOCITY_MODIFIER = 50f;
     public float horizontalSpeed = 1.8f;
@@ -48,15 +48,22 @@ public class PlayerScript : MonoBehaviour
     }
 
     private void CheckMouse()
-    {
-        if (Input.GetMouseButtonDown(0))
+    {	
+    	if (Input.GetMouseButtonDown(0)) 
+    	{
+    		leftClicking = true;
+    	}
+    	
+        if (leftClicking)
         {
             BuildupGlue();
             glueS[currentGlue].SetSize(glueBuildup);
             glue[currentGlue].transform.position = GetComponent<Rigidbody>().transform.position + GetComponent<Rigidbody>().transform.forward;  
         }
+        
         if (Input.GetMouseButtonUp(0))
         {
+        	leftClicking = false;
             ShootGlue();
         }
     }
