@@ -16,7 +16,6 @@ public class PlayerScript : MonoBehaviour
     bool active;
     float cooldown;
     public const float BASE_COOLDOWN = 0.5f;
-    bool rightClicking; // continually remains true until click is released
     
     public float horizontalSpeed = 1.8f;
     public float verticalSpeed = 1.8f;
@@ -52,7 +51,7 @@ public class PlayerScript : MonoBehaviour
         {
             BuildupGlue();
             glueS[currentGlue].SetSize(glueBuildup);
-            glue[currentGlue].transform.position = transform.position + transform.forward;  
+            glue[currentGlue].transform.position = GetComponent<Rigidbody>().transform.position + GetComponent<Rigidbody>().transform.forward;  
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -92,6 +91,7 @@ public class PlayerScript : MonoBehaviour
             currentGlue++;
         else
             currentGlue = 0;
+        glueBuildup = 0.0f;
     }
 
     private void OnCollisionEnter(Collision other)
