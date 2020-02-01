@@ -22,8 +22,7 @@ public class ShipPieceScript : MonoBehaviour
         attatchedPosition = transform.position; // All pieces need to start in the first frame assembled or else their snapping positions will be messed up
         rb = GetComponent<Rigidbody>();
         
-        //MAKES COLLISIONS NOT WORK
-        //rb.isKinematic = true;
+        rb.isKinematic = true;
         rb.velocity = new Vector3(0, 0, 0);
     }
 
@@ -48,7 +47,7 @@ public class ShipPieceScript : MonoBehaviour
     public void Attatch()
     {
         print("attatching");
-        //rb.isKinematic = true;
+        rb.isKinematic = true;
         rb.velocity = new Vector3(0, 0, 0);
         transform.position = attatchedPosition;
         inPlace = true;
@@ -66,6 +65,7 @@ public class ShipPieceScript : MonoBehaviour
             Detatch();
         else if (collision.gameObject.CompareTag("shippiece"))
             TestAttatch();
+        	
     }
 
     private void TestAttatch()
