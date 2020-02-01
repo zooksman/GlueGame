@@ -5,15 +5,17 @@ using UnityEngine;
 public class GlueScript : MonoBehaviour
 {
     Rigidbody rb;
-    public const float VELOCITY_MODIFIER = 4f;
+    public const float VELOCITY_MODIFIER = 10f;
     float size;
     public bool beingHeld;
+    public GameObject hit;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (beingHeld == false)
+        if (beingHeld == false) {
             transform.position = new Vector3(300f,300f,300f);
+        }
         rb = GetComponent<Rigidbody>();
         size = 0.2f; // same as minimum constant on PlayerScript
     }
@@ -21,7 +23,7 @@ public class GlueScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+		
     }
 
     public void SetSize(float s)
@@ -37,7 +39,9 @@ public class GlueScript : MonoBehaviour
     }
     
     public void OnCollisionEnter(Collision c) {
-    	
+    	hit = c.collider.gameObject;
+    	hit.GetComponent<Rigidbody>().isKinematic = true;
+    	hit.GetComponent<Rigidbody>().transform.parent = GetComponent<Rigidbody>().transform;
     }
 
 }
