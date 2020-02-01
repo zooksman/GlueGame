@@ -42,6 +42,9 @@ public class GlueScript : MonoBehaviour
     	hit = c.collider.gameObject;
     	hit.GetComponent<Rigidbody>().isKinematic = true;
     	hit.GetComponent<Rigidbody>().transform.parent = GetComponent<Rigidbody>().transform;
+    	if (c.collider.name == "ShipPiece") {
+    		hit.GetComponent<ShipPieceScript>().Glue();
+    	}
     }
 
 }
