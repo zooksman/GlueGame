@@ -16,13 +16,13 @@ public class PlayerScript : MonoBehaviour
 
     bool active;
     float cooldown;
-    public const float BASE_COOLDOWN = 0.5f;
+    const float BASE_COOLDOWN = 0.5f;
     bool leftClicking; // continually remains true until click is released
 
     Rigidbody rb;
     const float VELOCITY_MODIFIER = 100f;
-    public float horizontalSpeed = 1.8f;
-    public float verticalSpeed = 1.8f;
+    const float HORIZONTAL_SPEED = 1.8f;
+    const float VERTICAL_SPEED = 1.8f;
     float directionX;
     float directionY;
 
@@ -77,8 +77,8 @@ public class PlayerScript : MonoBehaviour
     
     private void FaceDirection()
     {
-        directionY += horizontalSpeed * Input.GetAxis("Mouse X");
-        directionX += verticalSpeed * Input.GetAxis("Mouse Y");
+        directionY += HORIZONTAL_SPEED * Input.GetAxis("Mouse X");
+        directionX += VERTICAL_SPEED * Input.GetAxis("Mouse Y");
         transform.rotation = Quaternion.Euler(-directionX, directionY, 0);
     }
 
