@@ -40,6 +40,7 @@ public class GlueScript : MonoBehaviour
     public void OnCollisionEnter(Collision c) {
     	hit = c.collider.gameObject;
     	if (hit.CompareTag("shippiece") && hit.GetComponent<ShipPieceScript>().inPlace == false) {
+            rb.velocity = new Vector3(rb.velocity.x / 2, rb.velocity.y / 2, rb.velocity.z);
     		hit.GetComponent<Rigidbody>().isKinematic = true;
     		hit.GetComponent<Rigidbody>().transform.parent = GetComponent<Rigidbody>().transform;
     		hit.GetComponent<ShipPieceScript>().Glue();

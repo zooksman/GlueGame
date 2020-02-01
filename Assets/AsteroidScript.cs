@@ -11,6 +11,10 @@ public class AsteroidScript : MonoBehaviour
     public const float CLOSEST_DISTANCE_VALUE = 50f;
     public const float FURTHEST_DISTANCE_VALUE = 90f;
 
+    float negMultX;
+    float negMultY;
+    float negMultZ;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +54,19 @@ public class AsteroidScript : MonoBehaviour
 
     private void StartingVelocity()
     {
-        rb.velocity = new Vector3((Random.value + 1) * VELOCITY_MODIFIER, (Random.value + 1) * VELOCITY_MODIFIER, (Random.value + 1) * VELOCITY_MODIFIER);
+        if (Random.value > 0.5f)
+            negMultX = 1f;
+        else
+            negMultX = -1f;
+        if (Random.value > 0.5f)
+            negMultY = 1f;
+        else
+            negMultY = -1f;
+        if (Random.value > 0.5f)
+            negMultZ = 1f;
+        else
+            negMultZ = -1f;
+        rb.velocity = new Vector3((Random.value + 1) * VELOCITY_MODIFIER * negMultX, (Random.value + 1) * VELOCITY_MODIFIER * negMultY, (Random.value + 1) * VELOCITY_MODIFIER * negMultZ);
         rb.angularVelocity = new Vector3(Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER);
     }
 
