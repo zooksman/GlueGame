@@ -32,5 +32,9 @@ public class GlueScript : MonoBehaviour
         transform.position = pos;
         rb.velocity = direction * VELOCITY_MODIFIER;
     }
+    
+    public void OnCollisionEnter(Collision c) {
+    	
+    }
 
 }
