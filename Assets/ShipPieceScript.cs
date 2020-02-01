@@ -22,7 +22,8 @@ public class ShipPieceScript : MonoBehaviour
         attatchedPosition = transform.position; // All pieces need to start in the first frame assembled or else their snapping positions will be messed up
         rb = GetComponent<Rigidbody>();
         
-        rb.isKinematic = true;
+        //MAKES COLLISIONS NOT WORK
+        //rb.isKinematic = true;
         rb.velocity = new Vector3(0, 0, 0);
     }
 
