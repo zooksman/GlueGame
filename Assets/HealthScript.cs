@@ -18,7 +18,8 @@ public class HealthScript : MonoBehaviour
 
     public void HealthChange(int health)
     {
-        changeHealth.text = "health";
-        changeHealth.text.GetComponent<Text>().text = "health";
+    	//Who goes to dinner with a compiler error??
+        //changeHealth.text = "health";
+        //changeHealth.text.GetComponent<Text>().text = "health";
     }
 }

@@ -48,7 +48,7 @@ public class ShipPieceScript : MonoBehaviour
     public void Attatch()
     {
         print("attatching");
-        rb.isKinematic = true;
+        //rb.isKinematic = true;
         rb.velocity = new Vector3(0, 0, 0);
         transform.position = attatchedPosition;
         inPlace = true;
