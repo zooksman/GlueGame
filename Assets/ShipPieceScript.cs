@@ -11,10 +11,12 @@ public class ShipPieceScript : MonoBehaviour
     Rigidbody rb;
     public const float BREAKING_MAX_VELOCITY = 4f;
     public const float ANGULAR_VELOCITY_MODIFIER = 4f;
+    public bool inPlace;
 
     // Start is called before the first frame update
     void Start()
     {
+        inPlace = true;
         attatchedPosition = transform.position; // All pieces need to start in the first frame assembled or else their snapping positions will be messed up
         rb = GetComponent<Rigidbody>();
         
@@ -34,6 +36,7 @@ public class ShipPieceScript : MonoBehaviour
         rb.isKinematic = false;
         rb.velocity = new Vector3(Random.Range(-BREAKING_MAX_VELOCITY, BREAKING_MAX_VELOCITY), Random.Range(-BREAKING_MAX_VELOCITY, BREAKING_MAX_VELOCITY), Random.Range(-BREAKING_MAX_VELOCITY, BREAKING_MAX_VELOCITY));
         rb.angularVelocity = new Vector3(Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER);
+        inPlace = false;
     }
 
     public void Attatch()
@@ -41,6 +44,7 @@ public class ShipPieceScript : MonoBehaviour
         rb.isKinematic = true;
         rb.velocity = new Vector3(0, 0, 0);
         transform.position = attatchedPosition;
+        inPlace = true;
         
     }
 
@@ -60,7 +64,10 @@ public class ShipPieceScript : MonoBehaviour
     private void TestAttatch()
     {
         if (glued && InPosition())
-            Glue();
+        {
+            Attatch();
+            glued = false;
+        }
     }
 
     private bool InPosition()

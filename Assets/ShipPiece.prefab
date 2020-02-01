@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MAX_SNAP_DISTANCE: 2
+  inPlace: 1
 --- !u!54 &535139273847294087
 Rigidbody:
   m_ObjectHideFlags: 0
