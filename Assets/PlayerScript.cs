@@ -93,7 +93,7 @@ public class PlayerScript : MonoBehaviour
             currentGlue++;
         else
             currentGlue = 0;
-        glueBuildup = 0.0f;
+        glueBuildup = MINIMUM_GLUE_BUILDUP;
     }
 
     private void OnCollisionEnter(Collision other)
