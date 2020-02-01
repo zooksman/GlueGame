@@ -12,13 +12,13 @@ public class PlayerScript : MonoBehaviour
 
     public int startingHealth = 100;
     public int currentHealth;
+    Animator anim;
 
     bool active;
     float cooldown;
     public const float BASE_COOLDOWN = 0.5f;
-    bool leftClicking; // continually remains true until click is released
-
-    const float VELOCITY_MODIFIER = 50f;
+    bool rightClicking; // continually remains true until click is released
+    
     public float horizontalSpeed = 1.8f;
     public float verticalSpeed = 1.8f;
     float directionX;
@@ -40,6 +40,11 @@ public class PlayerScript : MonoBehaviour
         glueBuildup = MINIMUM_GLUE_BUILDUP;
     }
 
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -48,23 +53,20 @@ public class PlayerScript : MonoBehaviour
     }
 
     private void CheckMouse()
-    {	
-    	if (Input.GetMouseButtonDown(0)) 
-    	{
-    		leftClicking = true;
-    	}
-    	
-        if (leftClicking)
+    {
+        if (rightClicking == true)
         {
             BuildupGlue();
             glueS[currentGlue].SetSize(glueBuildup);
-            glue[currentGlue].transform.position = GetComponent<Rigidbody>().transform.position + GetComponent<Rigidbody>().transform.forward;  
         }
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            rightClicking = true;
+        }
         if (Input.GetMouseButtonUp(0))
         {
-        	leftClicking = false;
             ShootGlue();
+            rightClicking = false;
         }
     }
     
@@ -72,14 +74,13 @@ public class PlayerScript : MonoBehaviour
     {
         directionY += horizontalSpeed * Input.GetAxis("Mouse X");
         directionX += verticalSpeed * Input.GetAxis("Mouse Y");
-        transform.rotation = Quaternion.Euler(-directionX, directionY, 0);
+        transform.rotation = Quaternion.Euler(directionX, -directionY, 0);
     }
 
     private void ShootGlue()
     {
-        glueS[currentGlue].ShootSelf(transform.forward);
-        PropelBackward(-transform.forward * VELOCITY_MODIFIER);
-        ReadyNewGlue();
+        glueS[currentGlue].ShootSelf(transform.localRotation * Vector3.forward, transform.position + transform.forward);
+        PropelBackward(transform.localRotation * -Vector3.forward);
     }
 
     private void PropelBackward(Vector3 direction)
@@ -96,11 +97,10 @@ public class PlayerScript : MonoBehaviour
 
     private void ReadyNewGlue()
     {
-        if (currentGlue < glue.Length - 1)
+        if (glue[currentGlue] != null)
             currentGlue++;
         else
             currentGlue = 0;
-        glueBuildup = MINIMUM_GLUE_BUILDUP;
     }
 
     private void OnCollisionEnter(Collision other)
@@ -123,6 +123,7 @@ public class PlayerScript : MonoBehaviour
 
     void GameOver()
     {
+        anim.SetTrigger("GameOver");
     }
 
 }
