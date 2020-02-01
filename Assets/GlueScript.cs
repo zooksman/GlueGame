@@ -5,7 +5,7 @@ using UnityEngine;
 public class GlueScript : MonoBehaviour
 {
     Rigidbody rb;
-    public const float VELOCITY_MODIFIER = 30f;
+    public const float VELOCITY_MODIFIER = 1000f;
     float size;
     bool beingHeld;
     public GameObject hit;
@@ -33,7 +33,7 @@ public class GlueScript : MonoBehaviour
 
     public void ShootSelf(Vector3 direction)
     {
-        rb.AddForce(direction);
+        rb.AddForce(direction * VELOCITY_MODIFIER);
     }
     
     public void OnCollisionEnter(Collision c) {
