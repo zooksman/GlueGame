@@ -38,6 +38,7 @@ public class PlayerScript : MonoBehaviour
         for (int i = 0; i < glue.Length; i++)
             glueS[i] = glue[i].GetComponent<GlueScript>();
         glueBuildup = MINIMUM_GLUE_BUILDUP;
+        currentGlue = 0;
     }
 
     // Update is called once per frame
@@ -64,6 +65,7 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
         	leftClicking = false;
+        	glue[currentGlue].transform.rotation = GetComponent<Rigidbody>().transform.rotation;
             ShootGlue();
         }
     }
