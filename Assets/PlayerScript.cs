@@ -97,4 +97,13 @@ public class PlayerScript : MonoBehaviour
             currentGlue = 0;
     }
 
+    private void OnTriggerEnter()
+    {
+        if(other.gameObject.tag == "asteroid")
+        {
+            currentHealth = currentHealth - 10;
+            WaitforSeconds(1.0f);
+        }
+    }
+
 }
