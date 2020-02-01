@@ -52,6 +52,7 @@ public class PlayerScript : MonoBehaviour
         {
             BuildupGlue();
             glueS[currentGlue].SetSize(glueBuildup);
+            glue[currentGlue].transform.position = transform.position + transform.forward;
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -73,7 +74,7 @@ public class PlayerScript : MonoBehaviour
 
     private void ShootGlue()
     {
-        glueS[currentGlue].ShootSelf(transform.localRotation * Vector3.forward, transform.position + transform.forward);
+        glueS[currentGlue].ShootSelf(transform.localRotation * Vector3.forward);
         PropelBackward(transform.localRotation * -Vector3.forward);
     }
 
