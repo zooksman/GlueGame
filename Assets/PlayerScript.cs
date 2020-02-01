@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
 
 
     public GameObject[] glue;
-    GlueScript[] glueS;
+    public GlueScript[] glueS;
     int currentGlue;
 
     bool active;

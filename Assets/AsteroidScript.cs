@@ -5,7 +5,7 @@ using UnityEngine;
 public class AsteroidScript : MonoBehaviour
 {
     Rigidbody rb;
-    public const float VELOCITY_MODIFIER = 1f;
+    public const float VELOCITY_MODIFIER = 4f;
     public const float ANGULAR_VELOCITY_MODIFIER = 1f;
     Vector3 preparedVector;
     public const float CLOSEST_DISTANCE_VALUE = 50f;
