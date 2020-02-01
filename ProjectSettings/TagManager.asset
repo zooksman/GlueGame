@@ -6,6 +6,7 @@ TagManager:
   tags:
   - asteroid
   - boundry
+  - shippiece
   layers:
   - Default
   - TransparentFX
