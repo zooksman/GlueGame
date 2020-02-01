@@ -97,13 +97,21 @@ public class PlayerScript : MonoBehaviour
             currentGlue = 0;
     }
 
-    private void OnCollisionEnter()
+    private void OnCollisionEnter(collision other)
     {
         if(other.gameObject.tag == "asteroid")
         {
             currentHealth = currentHealth - 10;
-            WaitforSeconds(1.0f);
+            StartCoroutine(WaitandCheck());
         }
     }
 
+    IEnumerator WaitAndCheck()
+    {
+        yield return new WaitForSeconds(1.0f);
+        if (currentHealth == 0)
+        {
+            GameOver();
+        }
+    }
 }
