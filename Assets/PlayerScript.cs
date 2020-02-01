@@ -68,7 +68,7 @@ public class PlayerScript : MonoBehaviour
     {
         directionY += horizontalSpeed * Input.GetAxis("Mouse X");
         directionX += verticalSpeed * Input.GetAxis("Mouse Y");
-        transform.rotation = Quaternion.Euler(directionX, -directionY, 0);
+        transform.rotation = Quaternion.Euler(-directionX, directionY, 0);
     }
 
     private void ShootGlue()
@@ -97,13 +97,26 @@ public class PlayerScript : MonoBehaviour
             currentGlue = 0;
     }
 
-    private void OnCollisionEnter()
+    private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "asteroid")
+        if(other.gameObject.CompareTag("asteroid"))
         {
             currentHealth = currentHealth - 10;
-            WaitforSeconds(1.0f);
+            StartCoroutine("WaitandCheck");
         }
+    }
+
+    IEnumerator WaitAndCheck()
+    {
+        yield return new WaitForSeconds(1.0f);
+        if (currentHealth == 0)
+        {
+            GameOver();
+        }
+    }
+
+    void GameOver()
+    {
     }
 
 }
