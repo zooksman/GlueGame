@@ -18,8 +18,10 @@ public class PlayerScript : MonoBehaviour
     public const float BASE_COOLDOWN = 0.5f;
     bool rightClicking; // continually remains true until click is released
     
-    public float horizontalSpeed = 1.0F;
-    public float verticalSpeed = 1.0F;
+    public float horizontalSpeed = 1.8f;
+    public float verticalSpeed = 1.8f;
+    float directionX;
+    float directionY;
 
     float glueBuildup;
     public const float GLUE_RATE_INCREASE = 0.01f;
@@ -29,6 +31,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        directionX = 0;
+        directionY = 0;
         active = true;
         for (int i = 0; i < glue.Length; i++)
             glueS[i] = glue[i].GetComponent<GlueScript>();
@@ -38,10 +42,12 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    	float h = horizontalSpeed * Input.GetAxis("Mouse X");
-        float v = verticalSpeed * Input.GetAxis("Mouse Y");
-        transform.Rotate(v, h, 0);
-        
+        CheckMouse();
+        FaceDirection();
+    }
+
+    private void CheckMouse()
+    {
         if (rightClicking == true)
         {
             BuildupGlue();
@@ -58,6 +64,13 @@ public class PlayerScript : MonoBehaviour
         }
     }
     
+    private void FaceDirection()
+    {
+        directionY += horizontalSpeed * Input.GetAxis("Mouse X");
+        directionX += verticalSpeed * Input.GetAxis("Mouse Y");
+        transform.rotation = Quaternion.Euler(directionX, -directionY, 0);
+    }
+
     private void ShootGlue()
     {
         glueS[currentGlue].ShootSelf(transform.localRotation * Vector3.forward, transform.position + transform.forward);
