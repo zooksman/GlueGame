@@ -52,7 +52,7 @@ public class ShipPieceScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("asteroid"))
             Detatch();
-        if (collision.gameObject.CompareTag("shippiece"))
+        else if (collision.gameObject.CompareTag("shippiece"))
             TestAttatch();
     }
 

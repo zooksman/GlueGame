@@ -6,8 +6,8 @@ public class PlayerScript : MonoBehaviour
 {
 
 
-    public GameObject glue;
-    GlueScript glueS;
+    public GameObject[] glue;
+    GlueScript[] glueS;
 
     bool active;
     float cooldown;
@@ -23,7 +23,8 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         active = true;
-        glueS = glue.GetComponent<GlueScript>();
+        for (int i = 0; i < glue.Length; i++)
+            glueS[i] = glue[i].GetComponent<GlueScript>();
         glueBuildup = MINIMUM_GLUE_BUILDUP;
     }
 
@@ -33,7 +34,7 @@ public class PlayerScript : MonoBehaviour
         if (rightClicking == true)
         {
             BuildupGlue();
-         	glueS.SetSize(glueBuildup);
+            glueS.SetSize(glueBuildup);
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -48,7 +49,7 @@ public class PlayerScript : MonoBehaviour
 
     private void ShootGlue()
     {
-        //NEED METHOD CALL ON GLUE OBJECT SCRIPT SHOOTING GLUE, PASSING IN DIRECTION VECTOR
+        glueS.ShootSelf(transform.localRotation * Vector3.forward, transform.position + transform.forward);
         PropelBackward();
     }
 
@@ -59,9 +60,14 @@ public class PlayerScript : MonoBehaviour
 
     private void BuildupGlue()
     {
-    	if (glueBuildup < MAXIMUM_GLUE_BUILDUP) {
-			glueBuildup += GLUE_RATE_INCREASE;
+        if (glueBuildup < MAXIMUM_GLUE_BUILDUP) {
+            glueBuildup += GLUE_RATE_INCREASE;
         }
+    }
+
+    private void ReadyNewGlue()
+    {
+        
     }
 
 }

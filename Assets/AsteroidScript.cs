@@ -8,7 +8,7 @@ public class AsteroidScript : MonoBehaviour
     public const float VELOCITY_MODIFIER = 1f;
     public const float ANGULAR_VELOCITY_MODIFIER = 1f;
     Vector3 preparedVector;
-    public const float CLOSEST_DISTANCE_VALUE = 30f;
+    public const float CLOSEST_DISTANCE_VALUE = 50f;
     public const float FURTHEST_DISTANCE_VALUE = 90f;
 
     // Start is called before the first frame update
@@ -60,7 +60,7 @@ public class AsteroidScript : MonoBehaviour
         {
             StartingPosition();
             StartingVelocity();
-        }  
+        }
     }
 
 }
