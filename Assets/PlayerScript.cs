@@ -71,7 +71,7 @@ public class PlayerScript : MonoBehaviour
     private void ShootGlue()
     {
         glueS[currentGlue].ShootSelf(Vector3.forward);
-        PropelBackward(-Vector3.forward * VELOCITY_MODIFIER);
+        PropelBackward(new Vector3(directionX, directionY, 0));
         ReadyNewGlue();
     }
 
