@@ -10,6 +10,9 @@ public class PlayerScript : MonoBehaviour
     public GlueScript[] glueS;
     int currentGlue;
 
+    public int startingHealth = 100;
+    public int currentHealth;
+
     bool active;
     float cooldown;
     public const float BASE_COOLDOWN = 0.5f;
