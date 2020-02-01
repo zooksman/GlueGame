@@ -49,20 +49,15 @@ public class PlayerScript : MonoBehaviour
 
     private void CheckMouse()
     {
-        if (rightClicking == true)
+        if (Input.GetMouseButtonDown(0))
         {
             BuildupGlue();
             glueS[currentGlue].SetSize(glueBuildup);
-            glue[currentGlue].transform.position = transform.position + transform.forward;
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            rightClicking = true;
+            glue[currentGlue].transform.position = transform.position + transform.forward;  
         }
         if (Input.GetMouseButtonUp(0))
         {
             ShootGlue();
-            rightClicking = false;
         }
     }
     
@@ -76,7 +71,7 @@ public class PlayerScript : MonoBehaviour
     private void ShootGlue()
     {
         glueS[currentGlue].ShootSelf(Vector3.forward);
-        PropelBackward(-Vector3.forward * VELOCITY_MODIFIER);
+        PropelBackward(-Vector3.forward);
         ReadyNewGlue();
     }
 
