@@ -113,7 +113,7 @@ public class PlayerScript : MonoBehaviour
     {
         if(other.gameObject.CompareTag("asteroid"))
         {
-            currentHealth = currentHealth - 10;
+            currentHealth = currentHealth - 100;
             StartCoroutine("WaitandCheck");
         }
     }
@@ -121,7 +121,7 @@ public class PlayerScript : MonoBehaviour
     IEnumerator WaitAndCheck()
     {
         yield return new WaitForSeconds(1.0f);
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             GameOver();
         }
