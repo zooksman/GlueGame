@@ -5,7 +5,7 @@ using UnityEngine;
 public class GlueScript : MonoBehaviour
 {
     Rigidbody rb;
-    public const float VELOCITY_MODIFIER = 10f;
+    public const float VELOCITY_MODIFIER = 30f;
     float size;
     public bool beingHeld;
     public GameObject hit;

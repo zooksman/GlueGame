@@ -97,12 +97,12 @@ public class PlayerScript : MonoBehaviour
             currentGlue = 0;
     }
 
-    private void OnCollisionEnter(collision other)
+    private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "asteroid")
+        if(other.gameObject.CompareTag("asteroid"))
         {
             currentHealth = currentHealth - 10;
-            StartCoroutine(WaitandCheck());
+            StartCoroutine("WaitandCheck");
         }
     }
 
@@ -114,4 +114,9 @@ public class PlayerScript : MonoBehaviour
             GameOver();
         }
     }
+
+    void GameOver()
+    {
+    }
+
 }
