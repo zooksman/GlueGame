@@ -34,7 +34,7 @@ public class GlueScript : MonoBehaviour
 
     public void ShootSelf(Vector3 direction)
     {
-        rb.velocity = direction * VELOCITY_MODIFIER;
+        rb.AddForce(direction, ForceMode.Impulse);
     }
     
     public void OnCollisionEnter(Collision c) {
