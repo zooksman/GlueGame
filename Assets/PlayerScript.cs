@@ -54,6 +54,8 @@ public class PlayerScript : MonoBehaviour
     {
         CheckMouse();
         FaceDirection();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void CheckMouse()
