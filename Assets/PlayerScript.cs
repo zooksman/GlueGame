@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     public float verticalSpeed = 1.8f;
     float directionX;
     float directionY;
+    const float PROPELLING_SPEED_MODIFIER = 50f;
 
     float glueBuildup;
     public const float GLUE_RATE_INCREASE = 0.01f;
@@ -79,7 +80,7 @@ public class PlayerScript : MonoBehaviour
 
     private void PropelBackward(Vector3 direction)
     {
-		GetComponent<Rigidbody>().AddForce(direction);
+		GetComponent<Rigidbody>().AddForce(direction * PROPELLING_SPEED_MODIFIER);
     }
 
     private void BuildupGlue()
