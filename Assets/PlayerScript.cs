@@ -18,6 +18,7 @@ public class PlayerScript : MonoBehaviour
     public const float BASE_COOLDOWN = 0.5f;
     bool leftClicking; // continually remains true until click is released
 
+    Rigidbody rb;
     const float VELOCITY_MODIFIER = 50f;
     public float horizontalSpeed = 1.8f;
     public float verticalSpeed = 1.8f;
@@ -32,6 +33,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         directionX = 0;
         directionY = 0;
         active = true;
@@ -57,7 +59,6 @@ public class PlayerScript : MonoBehaviour
         if (leftClicking)
         {
             BuildupGlue();
-            glueS[currentGlue].SetSize(glueBuildup);
             glue[currentGlue].transform.position = GetComponent<Rigidbody>().transform.position + GetComponent<Rigidbody>().transform.forward;  
         }
         
@@ -84,7 +85,7 @@ public class PlayerScript : MonoBehaviour
 
     private void PropelBackward(Vector3 direction)
     {
-		GetComponent<Rigidbody>().AddForce(direction);
+		rb.AddForce(direction);
     }
 
     private void BuildupGlue()
@@ -92,6 +93,7 @@ public class PlayerScript : MonoBehaviour
         if (glueBuildup < MAXIMUM_GLUE_BUILDUP) {
             glueBuildup += GLUE_RATE_INCREASE;
         }
+        glueS[currentGlue].SetSize(glueBuildup);
     }
 
     private void ReadyNewGlue()
