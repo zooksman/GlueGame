@@ -7,10 +7,12 @@ public class ShipPieceScript : MonoBehaviour
     bool glued;
     Vector3 attatchedPosition;
     float positionDifference;
-    public float MAX_SNAP_DISTANCE = 2f;
+    public float MAX_SNAP_DISTANCE = 50f;
     Rigidbody rb;
-    public const float BREAKING_MAX_VELOCITY = 4f;
-    public const float ANGULAR_VELOCITY_MODIFIER = 4f;
+    const float BREAKING_MAX_VELOCITY = 4f;
+    const float ANGULAR_VELOCITY_MODIFIER = 4f;
+    const float SPEED_DEGREDATION = 0.997f;
+
     public bool inPlace;
 
     // Start is called before the first frame update
@@ -27,7 +29,10 @@ public class ShipPieceScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!inPlace)
+        {
+            rb.velocity = new Vector3(rb.velocity.x * SPEED_DEGREDATION, rb.velocity.y * SPEED_DEGREDATION, rb.velocity.z * SPEED_DEGREDATION);
+        }
     }
 
     public void Detatch()
@@ -41,6 +46,7 @@ public class ShipPieceScript : MonoBehaviour
 
     public void Attatch()
     {
+        print("attatching");
         rb.isKinematic = true;
         rb.velocity = new Vector3(0, 0, 0);
         transform.position = attatchedPosition;

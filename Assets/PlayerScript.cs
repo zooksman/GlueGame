@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     bool leftClicking; // continually remains true until click is released
 
     Rigidbody rb;
-    const float VELOCITY_MODIFIER = 100f;
+    const float VELOCITY_MODIFIER = 500f;
     const float HORIZONTAL_SPEED = 1.8f;
     const float VERTICAL_SPEED = 1.8f;
     float directionX;
