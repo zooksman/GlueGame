@@ -43,7 +43,7 @@ public class ShipPieceScript : MonoBehaviour
         
     }
 
-    private void Glue()
+    public void Glue()
     {
         glued = true;
     }
