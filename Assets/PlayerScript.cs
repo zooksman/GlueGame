@@ -22,7 +22,6 @@ public class PlayerScript : MonoBehaviour
     public float verticalSpeed = 1.8f;
     float directionX;
     float directionY;
-    const float PROPELLING_SPEED_MODIFIER = 50f;
 
     float glueBuildup;
     public const float GLUE_RATE_INCREASE = 0.01f;
@@ -80,7 +79,7 @@ public class PlayerScript : MonoBehaviour
 
     private void PropelBackward(Vector3 direction)
     {
-		GetComponent<Rigidbody>().AddForce(direction * PROPELLING_SPEED_MODIFIER);
+		GetComponent<Rigidbody>().AddForce(direction);
     }
 
     private void BuildupGlue()
@@ -98,7 +97,7 @@ public class PlayerScript : MonoBehaviour
             currentGlue = 0;
     }
 
-    private void OnTriggerEnter()
+    private void OnCollisionEnter()
     {
         if(other.gameObject.tag == "asteroid")
         {
