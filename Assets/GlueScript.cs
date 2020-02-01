@@ -33,7 +33,6 @@ public class GlueScript : MonoBehaviour
 
     public void ShootSelf(Vector3 direction)
     {
-        hit.GetComponent<Rigidbody>().isKinematic = false;
         rb.AddForce(direction, ForceMode.Impulse);
     }
     
