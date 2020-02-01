@@ -33,6 +33,7 @@ public class GlueScript : MonoBehaviour
 
     public void ShootSelf(Vector3 direction)
     {
+        rb.velocity = new Vector3(0,0,0);
         rb.AddForce(direction * VELOCITY_MODIFIER);
     }
     
