@@ -58,21 +58,20 @@ public class PlayerScript : MonoBehaviour
 
     private void CheckMouse()
     {
-        if (rightClicking == true)
+        if (leftClicking == true)
         {
             BuildupGlue();
             glue[currentGlue].transform.position = GetComponent<Rigidbody>().transform.position + GetComponent<Rigidbody>().transform.forward;  
         }
         if (Input.GetMouseButtonDown(0))
         {
-            rightClicking = true;
+            leftClicking = true;
         }
         if (Input.GetMouseButtonUp(0))
         {
         	leftClicking = false;
         	glue[currentGlue].transform.rotation = GetComponent<Rigidbody>().transform.rotation;
             ShootGlue();
-            rightClicking = false;
         }
     }
     
