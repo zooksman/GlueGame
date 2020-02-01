@@ -17,8 +17,10 @@ public class PlayerScript : MonoBehaviour
     bool active;
     float cooldown;
     public const float BASE_COOLDOWN = 0.5f;
-    bool rightClicking; // continually remains true until click is released
-    
+    bool leftClicking; // continually remains true until click is released
+
+    Rigidbody rb;
+    const float VELOCITY_MODIFIER = 50f;
     public float horizontalSpeed = 1.8f;
     public float verticalSpeed = 1.8f;
     float directionX;
@@ -32,12 +34,14 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         directionX = 0;
         directionY = 0;
         active = true;
         for (int i = 0; i < glue.Length; i++)
             glueS[i] = glue[i].GetComponent<GlueScript>();
         glueBuildup = MINIMUM_GLUE_BUILDUP;
+        currentGlue = 0;
     }
 
     void Awake()
@@ -57,7 +61,7 @@ public class PlayerScript : MonoBehaviour
         if (rightClicking == true)
         {
             BuildupGlue();
-            glueS[currentGlue].SetSize(glueBuildup);
+            glue[currentGlue].transform.position = GetComponent<Rigidbody>().transform.position + GetComponent<Rigidbody>().transform.forward;  
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -65,6 +69,8 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+        	leftClicking = false;
+        	glue[currentGlue].transform.rotation = GetComponent<Rigidbody>().transform.rotation;
             ShootGlue();
             rightClicking = false;
         }
@@ -85,7 +91,7 @@ public class PlayerScript : MonoBehaviour
 
     private void PropelBackward(Vector3 direction)
     {
-		GetComponent<Rigidbody>().AddForce(direction);
+		rb.AddForce(direction);
     }
 
     private void BuildupGlue()
@@ -93,6 +99,7 @@ public class PlayerScript : MonoBehaviour
         if (glueBuildup < MAXIMUM_GLUE_BUILDUP) {
             glueBuildup += GLUE_RATE_INCREASE;
         }
+        glueS[currentGlue].SetSize(glueBuildup);
     }
 
     private void ReadyNewGlue()
