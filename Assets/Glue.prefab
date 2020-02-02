@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5503881024188085567}
   - component: {fileID: 5503881024188085564}
   - component: {fileID: -4655701115853294671}
+  - component: {fileID: 3558947494902708667}
   m_Layer: 8
   m_Name: Glue
   m_TagString: Untagged
@@ -93,7 +94,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.45
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5503881024188085564
 MonoBehaviour:
@@ -124,3 +125,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!135 &3558947494902708667
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5503881024188085565}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 0, z: 0}

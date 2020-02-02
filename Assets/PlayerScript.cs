@@ -28,6 +28,8 @@ public class PlayerScript : MonoBehaviour
     const float VERTICAL_SPEED = 1.8f;
     float directionX;
     float directionY;
+    const float BREAK_SPEED = 0.96f;
+    bool spacePressed;
 
     float glueBuildup;
     public const float GLUE_RATE_INCREASE = 0.01f;
@@ -66,10 +68,21 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckBreak();
         CheckMouse();
         FaceDirection();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void CheckBreak()
+    {
+        if (Input.GetKeyDown("space"))
+            spacePressed = true;
+        if (Input.GetKeyUp("space"))
+            spacePressed = false;
+        if(spacePressed)
+           rb.velocity = new Vector3(rb.velocity.x * BREAK_SPEED, rb.velocity.y * BREAK_SPEED, rb.velocity.z * BREAK_SPEED);
     }
 
     private void CheckMouse()
