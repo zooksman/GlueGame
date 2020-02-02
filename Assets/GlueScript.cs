@@ -60,7 +60,7 @@ public class GlueScript : MonoBehaviour
     IEnumerator ResetVelocity()
     {
         yield return new WaitForSeconds(0.1f);
-        rb.velocity = savedVelocity;
+        rb.velocity = savedVelocity*3;
     }
 
     public void OnCollisionEnter(Collision collision)
