@@ -5,13 +5,13 @@ using UnityEngine;
 public class GlueScript : MonoBehaviour
 {
     Rigidbody rb;
-    public const float VELOCITY_MODIFIER = 1000f;
+    const float VELOCITY_MODIFIER = 10000f;
     float size;
     bool beingHeld;
     public GameObject hit;
     bool glued;
     const float SPEED_DEGREDATION = 0.999f;
-    Vector3 savedVelocity;
+    Vector3 savedForce;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +26,9 @@ public class GlueScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (glued)
-            rb.velocity = new Vector3(rb.velocity.x * SPEED_DEGREDATION, rb.velocity.y * SPEED_DEGREDATION, rb.velocity.z * SPEED_DEGREDATION);
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        //if (glued)
+        //rb.velocity = new Vector3(rb.velocity.x * SPEED_DEGREDATION, rb.velocity.y * SPEED_DEGREDATION, rb.velocity.z * SPEED_DEGREDATION);
     }
 
     public void SetSize(float s)
@@ -41,7 +42,7 @@ public class GlueScript : MonoBehaviour
         glued = false;
         rb.velocity = new Vector3(0,0,0);
         rb.AddForce(direction * VELOCITY_MODIFIER);
-        savedVelocity = rb.velocity;
+        savedForce = direction * VELOCITY_MODIFIER;
     }
 
     public void OnTriggerEnter(Collider c) {
@@ -60,12 +61,7 @@ public class GlueScript : MonoBehaviour
     IEnumerator ResetVelocity()
     {
         yield return new WaitForSeconds(0.1f);
-        rb.velocity = savedVelocity*3;
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (!collision.gameObject.CompareTag("shippiece"))
-            savedVelocity = rb.velocity;
+        rb.velocity = new Vector3(0,0,0);
+        rb.AddForce(savedForce);
     }
 }

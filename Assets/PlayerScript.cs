@@ -181,11 +181,18 @@ public class PlayerScript : MonoBehaviour
 
     private void ReadyNewGlue()
     {
-        if (currentGlue < glue.Length - 1)
+        if (currentGlue < glue.Length - 1) {
             currentGlue++;
-        else
+        } else {
+        	for (int i = 0; i < glue.Length; i++) {
+        		if (glue[i].transform.childCount > 0) {
+        			glue[i].transform.GetChild(0).gameObject.GetComponent<ShipPieceScript>().Detatch();
+        		}
+            }
             currentGlue = 0;
+        }
         glueBuildup = MINIMUM_GLUE_BUILDUP;
+  
     }
 
     private void OnCollisionEnter(Collision other)

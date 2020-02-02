@@ -37,6 +37,7 @@ public class ShipPieceScript : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x * SPEED_DEGREDATION, rb.velocity.y * SPEED_DEGREDATION, rb.velocity.z * SPEED_DEGREDATION);
             TestAttatch();
         }
+        
     }
 
     public void Detatch()
