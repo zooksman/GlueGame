@@ -55,7 +55,7 @@ public class GlueScript : MonoBehaviour
             hit.GetComponent<Rigidbody>().transform.parent = GetComponent<Rigidbody>().transform;
             hit.GetComponent<ShipPieceScript>().Glue();
             print("on stick: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);
-            StartCoroutine("ResetVelocity");
+            //StartCoroutine("ResetVelocity");
         }
     }
 

@@ -64,12 +64,6 @@ public class ShipPieceScript : MonoBehaviour
         glued = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("asteroid"))
-            Detatch();        	
-    }
-
     private void TestAttatch()
     {
         if (glued && InPosition())
