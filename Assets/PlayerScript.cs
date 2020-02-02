@@ -209,7 +209,7 @@ public class PlayerScript : MonoBehaviour
         if(other.gameObject.CompareTag("asteroid") && hitstun == false)
         {
             hitstun = true;
-            currentHealth = currentHealth - 100;
+            currentHealth = currentHealth - 50;
             StartCoroutine("WaitandCheck");
             changeHealth.text = currentHealth.ToString();
         }
