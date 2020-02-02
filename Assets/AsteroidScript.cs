@@ -5,16 +5,18 @@ using UnityEngine;
 public class AsteroidScript : MonoBehaviour
 {
     Rigidbody rb;
-    public const float VELOCITY_MODIFIER = 4f;
+    public const float VELOCITY_MODIFIER = 15f;
     public const float ANGULAR_VELOCITY_MODIFIER = 1f;
     Vector3 preparedVector;
-    public const float CLOSEST_DISTANCE_VALUE = 50f;
-    public const float FURTHEST_DISTANCE_VALUE = 90f;
-    public Vector3 SHIP_COORDS = new Vector3(-4.018551f,-0.347738f,2.30722f);
+    public const float CLOSEST_DISTANCE_VALUE = 30f;
+    public const float FURTHEST_DISTANCE_VALUE = 60f;
 
     float negMultX;
     float negMultY;
     float negMultZ;
+    
+    GameObject target = null;
+    GameObject[] pieces;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +40,7 @@ public class AsteroidScript : MonoBehaviour
 
     private void StartingPosition() // has range of 90 to 30 OR -90 to 30
     {    	
-    	GameObject[] pieces = GameObject.FindGameObjectsWithTag("shippiece");
-    	GameObject target = null;
+    	pieces = GameObject.FindGameObjectsWithTag("shippiece");
     	int i;
     	for (i = Random.Range(0,pieces.Length); i < pieces.Length; i++ ) {
     		if (pieces[i].GetComponent<ShipPieceScript>().GetInPlace()) {
@@ -67,19 +68,9 @@ public class AsteroidScript : MonoBehaviour
 
     private void StartingVelocity()
     {
-        if (Random.value > 0.5f)
-            negMultX = 1f;
-        else
-            negMultX = -1f;
-        if (Random.value > 0.5f)
-            negMultY = 1f;
-        else
-            negMultY = -1f;
-        if (Random.value > 0.5f)
-            negMultZ = 1f;
-        else
-            negMultZ = -1f;
-        rb.velocity = new Vector3((Random.value + 1) * VELOCITY_MODIFIER * negMultX, (Random.value + 1) * VELOCITY_MODIFIER * negMultY, (Random.value + 1) * VELOCITY_MODIFIER * negMultZ);
+    	Vector3 randomVelocity;
+    	randomVelocity = new Vector3(Random.value, Random.value, Random.value);
+        rb.velocity = ((target.transform.position - this.transform.position).normalized + randomVelocity) * VELOCITY_MODIFIER * 5*Random.value;
         rb.angularVelocity = new Vector3(Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER);
     }
 
