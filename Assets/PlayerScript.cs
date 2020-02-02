@@ -49,6 +49,7 @@ public class PlayerScript : MonoBehaviour
     private Camera camera;
 
     GameObject hitObject;
+    public AudioManagerScript audioS;
 
     // Start is called before the first frame update
     void Start()
@@ -101,6 +102,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            audioS.PlayShoot();
         	leftClicking = false;
         	glue[currentGlue].transform.rotation = GetComponent<Rigidbody>().transform.rotation;
             ShootGlue();

@@ -427,7 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &81094184
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -578,6 +577,147 @@ Transform:
   - {fileID: 1042006101241994987}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &112156629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112156632}
+  - component: {fileID: 112156630}
+  - component: {fileID: 112156631}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &112156630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112156629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afaf063d1a2a5843b741edc347fdc3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoot: {fileID: 8300000, guid: dae5f1181f25084489ae3591f4a92900, type: 3}
+--- !u!82 &112156631
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112156629}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.002
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.991272
+      value: 0.9970703
+      inSlope: -0.027215652
+      outSlope: -0.027215652
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.28692657
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &112156632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112156629}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.028478, y: 0.2393583, z: -8.648117}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1299652697}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &115884512
 PrefabInstance:
@@ -864,7 +1004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &186473880
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1123,7 +1262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &333692694
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1171,7 +1309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &382218299
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1348,7 +1485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!1001 &447167560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1640,7 +1776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &469151245
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1950,7 +2085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!1001 &642480247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2179,7 +2313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!1001 &704558809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2323,7 +2456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &708776771
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2554,7 +2686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &784419245
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2702,7 +2833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &810450076
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3089,7 +3219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &899231871
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3237,7 +3366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &920892718
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3329,7 +3457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &999456096
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3477,7 +3604,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &1009519877
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3747,7 +3873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!1001 &1127259643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4041,7 +4166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &1192183317
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4218,7 +4342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!1 &1222629782
 GameObject:
   m_ObjectHideFlags: 0
@@ -4470,6 +4593,7 @@ MonoBehaviour:
   currentHealth: 0
   changeHealth: {fileID: 171180039}
   anim: {fileID: 256987719}
+  audioS: {fileID: 112156630}
 --- !u!4 &1299652697
 Transform:
   m_ObjectHideFlags: 0
@@ -4482,6 +4606,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 756591379}
+  - {fileID: 112156632}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4533,7 +4658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &1350563891
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5028,7 +5152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &1565904936
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5205,7 +5328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!1 &1628395350 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7557707388713271392, guid: 4dbdae6120a84425da6b29e865318cca,
@@ -5224,7 +5346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &1628395353
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5581,7 +5702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &1753076242
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5841,7 +5961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ac32f2dadd5194998c234124d3ec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHIP_COORDS: {x: -4.018551, y: -0.347738, z: 2.30722}
 --- !u!135 &2004021820
 SphereCollider:
   m_ObjectHideFlags: 0
