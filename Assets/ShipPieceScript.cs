@@ -17,9 +17,13 @@ public class ShipPieceScript : MonoBehaviour
 
     public bool inPlace;
 
+    PlayerScript playerS;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+
         savedParent = transform.parent;
         inPlace = true;
         attatchedPosition = transform.position; // All pieces need to start in the first frame assembled or else their snapping positions will be messed up
@@ -47,6 +51,7 @@ public class ShipPieceScript : MonoBehaviour
         rb.velocity = new Vector3(Random.Range(-BREAKING_MAX_VELOCITY, BREAKING_MAX_VELOCITY), Random.Range(-BREAKING_MAX_VELOCITY, BREAKING_MAX_VELOCITY), Random.Range(-BREAKING_MAX_VELOCITY, BREAKING_MAX_VELOCITY));
         rb.angularVelocity = new Vector3(Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER);
         inPlace = false;
+        playerS.ReduceRemaining();
     }
 
     public void Attatch()
@@ -57,6 +62,7 @@ public class ShipPieceScript : MonoBehaviour
         transform.position = attatchedPosition;
         transform.localRotation = Quaternion.Euler(0,0,0);
         inPlace = true;
+        playerS.IncreaseRemaining();
     }
 
     public void Glue()
