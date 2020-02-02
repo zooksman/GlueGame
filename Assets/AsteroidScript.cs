@@ -10,11 +10,13 @@ public class AsteroidScript : MonoBehaviour
     Vector3 preparedVector;
     public const float CLOSEST_DISTANCE_VALUE = 50f;
     public const float FURTHEST_DISTANCE_VALUE = 90f;
-    public Vector3 SHIP_COORDS = new Vector3(-4.018551f,-0.347738f,2.30722f);
 
     float negMultX;
     float negMultY;
     float negMultZ;
+    
+    GameObject target = null;
+    GameObject[] pieces;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +40,7 @@ public class AsteroidScript : MonoBehaviour
 
     private void StartingPosition() // has range of 90 to 30 OR -90 to 30
     {    	
-    	GameObject[] pieces = GameObject.FindGameObjectsWithTag("shippiece");
-    	GameObject target = null;
+    	pieces = GameObject.FindGameObjectsWithTag("shippiece");
     	int i;
     	for (i = Random.Range(0,pieces.Length); i < pieces.Length; i++ ) {
     		if (pieces[i].GetComponent<ShipPieceScript>().GetInPlace()) {
@@ -51,17 +52,17 @@ public class AsteroidScript : MonoBehaviour
     	}
 
         if(Random.value > 0.5f)
-            preparedVector = new Vector3(Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), preparedVector.y, preparedVector.z);
+            preparedVector = new Vector3(Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), target.transform.position.y, target.transform.position.z);
         else
-            preparedVector = new Vector3(-Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), preparedVector.y, preparedVector.z);
+            preparedVector = new Vector3(-Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), target.transform.position.y, target.transform.position.z);
         if (Random.value > 0.5f)
-            preparedVector = new Vector3(preparedVector.x, Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), preparedVector.z);
+            preparedVector = new Vector3(target.transform.position.x, Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), target.transform.position.z);
         else
-            preparedVector = new Vector3(preparedVector.x, -Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), preparedVector.z);
+            preparedVector = new Vector3(target.transform.position.x, -Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), target.transform.position.z);
         if (Random.value > 0.5f)
-            preparedVector = new Vector3(preparedVector.x, preparedVector.y, Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE));
+            preparedVector = new Vector3(target.transform.position.x, target.transform.position.y, Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE));
         else
-            preparedVector = new Vector3(preparedVector.x, preparedVector.y, -Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE));
+            preparedVector = new Vector3(target.transform.position.x, target.transform.position.y, -Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE));
         transform.position = preparedVector;
     }
 
@@ -79,7 +80,8 @@ public class AsteroidScript : MonoBehaviour
             negMultZ = 1f;
         else
             negMultZ = -1f;
-        rb.velocity = new Vector3((Random.value + 1) * VELOCITY_MODIFIER * negMultX, (Random.value + 1) * VELOCITY_MODIFIER * negMultY, (Random.value + 1) * VELOCITY_MODIFIER * negMultZ);
+        rb.velocity = (target.transform.position - this.transform.position).normalized * VELOCITY_MODIFIER;
+        //rb.velocity = new Vector3((Random.value + 1) * VELOCITY_MODIFIER * negMultX, (Random.value + 1) * VELOCITY_MODIFIER * negMultY, (Random.value + 1) * VELOCITY_MODIFIER * negMultZ);
         rb.angularVelocity = new Vector3(Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER);
     }
 
