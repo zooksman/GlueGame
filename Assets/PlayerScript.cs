@@ -211,22 +211,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
     
-    private void Grabber() 
-    {
-    	RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.localRotation * Vector3.forward, out hit, GRABBER_RANGE))
-        {
-            Debug.DrawRay(transform.position, transform.localRotation * Vector3.forward * hit.distance, Color.yellow, 30.0f);
-            Debug.Log("Grab hit");
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.localRotation * Vector3.forward * 1000, Color.white, 30.0f);
-            Debug.Log("Grab not Hit");
-        }
-    }
-
     IEnumerator WaitAndCheck()
     {
         yield return new WaitForSeconds(1.0f);
