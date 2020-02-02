@@ -53,7 +53,6 @@ public class GlueScript : MonoBehaviour
 
     public void OnTriggerEnter(Collider c) {
     	hit = c.gameObject;
-        print(hit.tag);
         if (hit.CompareTag("shippiece"))
         {
             if (hit.GetComponent<ShipPieceScript>().GetInPlace() == false)
