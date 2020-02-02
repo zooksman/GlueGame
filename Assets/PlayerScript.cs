@@ -54,7 +54,6 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         remainingPieces = GameObject.FindGameObjectsWithTag("shippiece").Length;
-        remainingPieces /= 2;
         rb = GetComponent<Rigidbody>();
         directionX = 0;
         directionY = 0;
