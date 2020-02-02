@@ -10,6 +10,7 @@ public class AsteroidScript : MonoBehaviour
     Vector3 preparedVector;
     public const float CLOSEST_DISTANCE_VALUE = 50f;
     public const float FURTHEST_DISTANCE_VALUE = 90f;
+    public Vector3 SHIP_COORDS = new Vector3(-4.018551f,-0.347738f,2.30722f);
 
     float negMultX;
     float negMultY;
@@ -37,6 +38,7 @@ public class AsteroidScript : MonoBehaviour
 
     private void StartingPosition() // has range of 90 to 30 OR -90 to 30
     {
+    	//Vector3 coords = GameObject.FindGameObjectWithTag("shippiece").GetComponent<ShipPieceScript>().getPosition();
         if(Random.value > 0.5f)
             preparedVector = new Vector3(Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), preparedVector.y, preparedVector.z);
         else
