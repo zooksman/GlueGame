@@ -59,8 +59,8 @@ public class PlayerScript : MonoBehaviour
         glueBuildup = MINIMUM_GLUE_BUILDUP;
         currentGlue = 0;
         camera = (Camera)GameObject.FindObjectOfType(typeof(Camera));
-        changeHealth = GetComponent<Text>();
-        changeHealth.text = currentHealth.ToString();
+        //changeHealth = GetComponent<Text>();
+        //changeHealth.text = currentHealth.ToString();
     }
 
     void Awake()
@@ -159,7 +159,6 @@ public class PlayerScript : MonoBehaviour
 
     private void ShootGlue()
     {
-        print("current glue: " + currentGlue);
         glueS[currentGlue].ShootSelf(transform.localRotation * Vector3.forward);
         PropelBackward(transform.localRotation * (-Vector3.forward * VELOCITY_MODIFIER * glueBuildup));
         ReadyNewGlue();
