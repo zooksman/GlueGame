@@ -11,7 +11,6 @@ public class PlayerScript : MonoBehaviour
     public GlueScript[] glueS;
     int currentGlue;
 
-    public HealthScript[] HealthScript;
     public int startingHealth = 100;
     public int currentHealth;
     public Text changeHealth;
@@ -59,8 +58,8 @@ public class PlayerScript : MonoBehaviour
         glueBuildup = MINIMUM_GLUE_BUILDUP;
         currentGlue = 0;
         camera = (Camera)GameObject.FindObjectOfType(typeof(Camera));
-        //changeHealth = GetComponent<Text>();
-        //changeHealth.text = currentHealth.ToString();
+        currentHealth = startingHealth;
+        changeHealth.text = currentHealth.ToString();
     }
 
     void Awake()
@@ -200,7 +199,6 @@ public class PlayerScript : MonoBehaviour
         {
             currentHealth = currentHealth - 100;
             StartCoroutine("WaitandCheck");
-            changeHealth = GetComponent<Text>();
             changeHealth.text = currentHealth.ToString();
         }
     }
