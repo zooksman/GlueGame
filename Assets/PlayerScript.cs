@@ -34,12 +34,11 @@ public class PlayerScript : MonoBehaviour
     public const float MINIMUM_GLUE_BUILDUP = 0.2f;
     public const float MAXIMUM_GLUE_BUILDUP = 1f;
     
-    public const float GRABBER_RANGE = 100f;
+    public const float GRABBER_RANGE = 300f;
     
     private RaycastHit hit;
     private float dist;
     private bool isHolding = false;
-    private float pickupDistance = 100.0f;
     private float holdDistance = 5.0f;
     private Vector3 newPos;
     private GameObject heldObject;
@@ -103,8 +102,8 @@ public class PlayerScript : MonoBehaviour
                     	Debug.Log("Grab hit");
                         hit.collider.transform.parent = transform.parent;
                         hit.collider.GetComponent<Rigidbody>().isKinematic = true;
-                        Vector3 newPosition = camera.transform.position;
-                        newPosition += camera.transform.forward * holdDistance;
+                        Vector3 newPosition = transform.position;
+                        newPosition += transform.forward * holdDistance;
                         heldObject = hit.collider.gameObject;
                         hit.collider.transform.position = newPosition;
                         isHolding = true;
@@ -116,8 +115,8 @@ public class PlayerScript : MonoBehaviour
             {
                 if (heldObject != null)
             {
-                Vector3 newPosition = camera.transform.position;
-                newPosition += camera.transform.forward * holdDistance;
+                Vector3 newPosition = transform.position;
+                newPosition += transform.forward * holdDistance;
                 heldObject.transform.position = newPosition;
 
                 if (Input.GetMouseButtonUp(1))
