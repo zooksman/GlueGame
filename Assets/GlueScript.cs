@@ -49,19 +49,30 @@ public class GlueScript : MonoBehaviour
     	hit = c.gameObject;
         if (hit.CompareTag("shippiece") && hit.GetComponent<ShipPieceScript>().inPlace == false)
         {
+            print("before: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);
             glued = true;
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
             hit.GetComponent<Rigidbody>().isKinematic = true;
             hit.GetComponent<Rigidbody>().transform.parent = GetComponent<Rigidbody>().transform;
             hit.GetComponent<ShipPieceScript>().Glue();
+            print("on stick: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);
+            StartCoroutine("ResetVelocity");
         }
-        StartCoroutine("ResetVelocity");
     }
 
     IEnumerator ResetVelocity()
     {
+        print("RESETTING!!!");
         yield return new WaitForSeconds(0.1f);
         rb.velocity = new Vector3(0,0,0);
         rb.AddForce(savedForce);
+        print("on reset: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);
     }
+
+    IEnumerator TestingVelocity()
+    {
+        yield return new WaitForSeconds(0.01f);
+        print("afterwards: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);
+    }
+
 }

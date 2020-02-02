@@ -82,7 +82,6 @@ public class ShipPieceScript : MonoBehaviour
     private bool InPosition()
     {
         positionDifference = Mathf.Pow(Mathf.Pow(attatchedPosition.x - transform.position.x, 2f) + Mathf.Pow(attatchedPosition.y - transform.position.y, 2f) + Mathf.Pow(attatchedPosition.z - transform.position.z, 2f), 0.5f);
-        print("position difference: " + positionDifference);
         if (positionDifference < MAX_SNAP_DISTANCE)
             return true;
         else
