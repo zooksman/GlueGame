@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
 
+    int remainingPieces;
 
     public GameObject[] glue;
     public GlueScript[] glueS;
@@ -24,7 +25,7 @@ public class PlayerScript : MonoBehaviour
     bool leftClicking; // continually remains true until click is released
 
     Rigidbody rb;
-    const float VELOCITY_MODIFIER = 500f;
+    const float VELOCITY_MODIFIER = 700f;
     const float HORIZONTAL_SPEED = 1.8f;
     const float VERTICAL_SPEED = 1.8f;
     float directionX;
@@ -34,8 +35,8 @@ public class PlayerScript : MonoBehaviour
 
     float glueBuildup;
     public const float GLUE_RATE_INCREASE = 0.01f;
-    public const float MINIMUM_GLUE_BUILDUP = 0.2f;
-    public const float MAXIMUM_GLUE_BUILDUP = 1f;
+    public const float MINIMUM_GLUE_BUILDUP = 0.05f;
+    public const float MAXIMUM_GLUE_BUILDUP = 1.2f;
     
     public const float GRABBER_RANGE = 300f;
     
@@ -50,6 +51,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        remainingPieces = GameObject.FindGameObjectsWithTag("shippiece").Length;
+        remainingPieces /= 2;
         rb = GetComponent<Rigidbody>();
         directionX = 0;
         directionY = 0;
@@ -59,8 +62,8 @@ public class PlayerScript : MonoBehaviour
         glueBuildup = MINIMUM_GLUE_BUILDUP;
         currentGlue = 0;
         camera = (Camera)GameObject.FindObjectOfType(typeof(Camera));
-        //changeHealth = GetComponent<Text>();
-        //changeHealth.text = currentHealth.ToString();
+        changeHealth = GetComponent<Text>();
+        changeHealth.text = currentHealth.ToString();
     }
 
     void Awake()
