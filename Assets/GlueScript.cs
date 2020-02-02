@@ -41,7 +41,7 @@ public class GlueScript : MonoBehaviour
         glued = false;
         rb.velocity = new Vector3(0,0,0);
         rb.AddForce(direction * VELOCITY_MODIFIER);
-        savedVelocity = rb.velocity;
+        StartCoroutine("SaveVelocity");
     }
 
     public void OnTriggerEnter(Collider c) {
@@ -57,10 +57,16 @@ public class GlueScript : MonoBehaviour
         StartCoroutine("ResetVelocity");
     }
 
+    IEnumerator SaveVelocity()
+    {
+        yield return new WaitForSeconds(0.01f);
+        savedVelocity = rb.velocity;
+    }
+
     IEnumerator ResetVelocity()
     {
         yield return new WaitForSeconds(0.1f);
-        rb.velocity = savedVelocity*3;
+        rb.velocity = savedVelocity;
     }
 
     public void OnCollisionEnter(Collision collision)
