@@ -46,5 +46,5 @@ public class GlueScript : MonoBehaviour
     		hit.GetComponent<ShipPieceScript>().Glue();
     	}
     }
-
+    
 }

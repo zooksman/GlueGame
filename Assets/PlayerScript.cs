@@ -33,6 +33,17 @@ public class PlayerScript : MonoBehaviour
     public const float GLUE_RATE_INCREASE = 0.01f;
     public const float MINIMUM_GLUE_BUILDUP = 0.2f;
     public const float MAXIMUM_GLUE_BUILDUP = 1f;
+    
+    public const float GRABBER_RANGE = 100f;
+    
+    private RaycastHit hit;
+    private float dist;
+    private bool isHolding = false;
+    private float pickupDistance = 100.0f;
+    private float holdDistance = 5.0f;
+    private Vector3 newPos;
+    private GameObject heldObject;
+    private Camera camera;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +56,7 @@ public class PlayerScript : MonoBehaviour
             glueS[i] = glue[i].GetComponent<GlueScript>();
         glueBuildup = MINIMUM_GLUE_BUILDUP;
         currentGlue = 0;
+        camera = (Camera)GameObject.FindObjectOfType(typeof(Camera));
     }
 
     void Awake()
@@ -77,6 +89,49 @@ public class PlayerScript : MonoBehaviour
         	leftClicking = false;
         	glue[currentGlue].transform.rotation = GetComponent<Rigidbody>().transform.rotation;
             ShootGlue();
+        }
+                
+         if (!isHolding)
+            {
+            if (Input.GetMouseButtonDown(1))
+            {   
+
+                if (Physics.Raycast(transform.position, transform.localRotation * Vector3.forward, out hit, GRABBER_RANGE))
+                {
+                    if (hit.collider.gameObject.CompareTag("shippiece") && !hit.collider.gameObject.GetComponent<ShipPieceScript>().inPlace && !hit.collider.gameObject.GetComponent<ShipPieceScript>().glued)
+                    {
+                    	Debug.Log("Grab hit");
+                        hit.collider.transform.parent = transform.parent;
+                        hit.collider.GetComponent<Rigidbody>().isKinematic = true;
+                        Vector3 newPosition = camera.transform.position;
+                        newPosition += camera.transform.forward * holdDistance;
+                        heldObject = hit.collider.gameObject;
+                        hit.collider.transform.position = newPosition;
+                        isHolding = true;
+                    }
+                }
+            }
+            }
+            else
+            {
+                if (heldObject != null)
+            {
+                Vector3 newPosition = camera.transform.position;
+                newPosition += camera.transform.forward * holdDistance;
+                heldObject.transform.position = newPosition;
+
+                if (Input.GetMouseButtonUp(1))
+                {
+                    heldObject.GetComponent<Rigidbody>().isKinematic = false;
+                    heldObject.transform.parent = null;
+                    heldObject = null;
+                    isHolding = false;
+                }
+            } else
+            {
+                isHolding = false;
+            }
+               
         }
     }
     
@@ -124,6 +179,22 @@ public class PlayerScript : MonoBehaviour
         {
             currentHealth = currentHealth - 100;
             StartCoroutine("WaitandCheck");
+        }
+    }
+    
+    private void Grabber() 
+    {
+    	RaycastHit hit;
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(transform.position, transform.localRotation * Vector3.forward, out hit, GRABBER_RANGE))
+        {
+            Debug.DrawRay(transform.position, transform.localRotation * Vector3.forward * hit.distance, Color.yellow, 30.0f);
+            Debug.Log("Grab hit");
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.localRotation * Vector3.forward * 1000, Color.white, 30.0f);
+            Debug.Log("Grab not Hit");
         }
     }
 

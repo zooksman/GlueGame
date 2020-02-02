@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipPieceScript : MonoBehaviour
 {
-    bool glued;
+    public bool glued;
     Vector3 attatchedPosition;
     float positionDifference;
     public float MAX_SNAP_DISTANCE = 50f;
