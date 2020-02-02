@@ -5,11 +5,11 @@ using UnityEngine;
 public class AsteroidScript : MonoBehaviour
 {
     Rigidbody rb;
-    public const float VELOCITY_MODIFIER = 1f;
+    public const float VELOCITY_MODIFIER = 15f;
     public const float ANGULAR_VELOCITY_MODIFIER = 1f;
     Vector3 preparedVector;
-    public const float CLOSEST_DISTANCE_VALUE = 50f;
-    public const float FURTHEST_DISTANCE_VALUE = 90f;
+    public const float CLOSEST_DISTANCE_VALUE = 30f;
+    public const float FURTHEST_DISTANCE_VALUE = 60f;
 
     float negMultX;
     float negMultY;
@@ -68,20 +68,9 @@ public class AsteroidScript : MonoBehaviour
 
     private void StartingVelocity()
     {
-        if (Random.value > 0.5f)
-            negMultX = 1f;
-        else
-            negMultX = -1f;
-        if (Random.value > 0.5f)
-            negMultY = 1f;
-        else
-            negMultY = -1f;
-        if (Random.value > 0.5f)
-            negMultZ = 1f;
-        else
-            negMultZ = -1f;
-        rb.velocity = (target.transform.position - this.transform.position).normalized * VELOCITY_MODIFIER;
-        //rb.velocity = new Vector3((Random.value + 1) * VELOCITY_MODIFIER * negMultX, (Random.value + 1) * VELOCITY_MODIFIER * negMultY, (Random.value + 1) * VELOCITY_MODIFIER * negMultZ);
+    	Vector3 randomVelocity;
+    	randomVelocity = new Vector3(Random.value, Random.value, Random.value);
+        rb.velocity = ((target.transform.position - this.transform.position).normalized + randomVelocity) * VELOCITY_MODIFIER * Random.value;
         rb.angularVelocity = new Vector3(Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER);
     }
 
