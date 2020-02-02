@@ -3,7 +3,32 @@ guid: f7b3d2c337417451c9a0ba06c5e7dd0f
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SHIP_pCube2Mat
+    second: {fileID: 2100000, guid: e8387bc555898e640b778b58d14955fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SHIP_pCube8Mat
+    second: {fileID: 2100000, guid: 3ed31ff90bf08c94ab3bb05c1bf5721e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SHIP_pCylinder2Mat
+    second: {fileID: 2100000, guid: e0671e1926489c34c94d3556d98496a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pCylinder1_SHIPMat
+    second: {fileID: 2100000, guid: 940576513b73942489fceacf5676a961, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface2Mat
+    second: {fileID: 2100000, guid: c6dbe19dd700bda45936a04a4f8026ef, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
