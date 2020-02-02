@@ -11,7 +11,7 @@ public class GlueScript : MonoBehaviour
     public GameObject hit;
     bool glued;
     const float SPEED_DEGREDATION = 0.999f;
-    Vector3 savedVelocity;
+    Vector3 savedForce;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +26,9 @@ public class GlueScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (glued)
-            rb.velocity = new Vector3(rb.velocity.x * SPEED_DEGREDATION, rb.velocity.y * SPEED_DEGREDATION, rb.velocity.z * SPEED_DEGREDATION);
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        //if (glued)
+        //rb.velocity = new Vector3(rb.velocity.x * SPEED_DEGREDATION, rb.velocity.y * SPEED_DEGREDATION, rb.velocity.z * SPEED_DEGREDATION);
     }
 
     public void SetSize(float s)
@@ -41,7 +42,7 @@ public class GlueScript : MonoBehaviour
         glued = false;
         rb.velocity = new Vector3(0,0,0);
         rb.AddForce(direction * VELOCITY_MODIFIER);
-        StartCoroutine("SaveVelocity");
+        savedForce = direction * VELOCITY_MODIFIER;
     }
 
     public void OnTriggerEnter(Collider c) {
@@ -57,15 +58,10 @@ public class GlueScript : MonoBehaviour
         StartCoroutine("ResetVelocity");
     }
 
-    IEnumerator SaveVelocity()
-    {
-        yield return new WaitForSeconds(0.01f);
-        savedVelocity = rb.velocity;
-    }
-
     IEnumerator ResetVelocity()
     {
         yield return new WaitForSeconds(0.1f);
-        rb.velocity = savedVelocity;
+        rb.velocity = new Vector3(0,0,0);
+        rb.AddForce(savedForce);
     }
 }
