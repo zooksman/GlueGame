@@ -17,7 +17,7 @@ public class PlayerScript : MonoBehaviour
     public Text changeHealth;
     bool hitstun = false;
 
-    Animator anim;
+    public Animator anim;
 
     bool active;
     float cooldown;
@@ -68,10 +68,6 @@ public class PlayerScript : MonoBehaviour
         changeHealth.text = currentHealth.ToString();
     }
 
-    void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
 
     // Update is called once per frame
     void Update()

@@ -8534,6 +8534,7 @@ MonoBehaviour:
   startingHealth: 100
   currentHealth: 0
   changeHealth: {fileID: 171180039}
+  anim: {fileID: 256987719}
 --- !u!4 &1299652697
 Transform:
   m_ObjectHideFlags: 0
