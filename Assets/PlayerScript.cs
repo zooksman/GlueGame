@@ -15,6 +15,7 @@ public class PlayerScript : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
     public Text changeHealth;
+    bool hitstun = false;
 
     Animator anim;
 
@@ -198,8 +199,9 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag("asteroid"))
+        if(other.gameObject.CompareTag("asteroid") && hitstun == false)
         {
+            hitstun = true;
             currentHealth = currentHealth - 100;
             StartCoroutine("WaitandCheck");
             changeHealth.text = currentHealth.ToString();
@@ -225,6 +227,7 @@ public class PlayerScript : MonoBehaviour
     IEnumerator WaitAndCheck()
     {
         yield return new WaitForSeconds(1.0f);
+        hitstun = false;
         if (currentHealth <= 0)
         {
             GameOver();
