@@ -41,7 +41,7 @@ public class AsteroidScript : MonoBehaviour
     	GameObject[] pieces = GameObject.FindGameObjectsWithTag("shippiece");
     	GameObject target = null;
     	int i;
-    	for (i = Random.Range(0,pieces.length); i < pieces.length; i++ ) {
+    	for (i = Random.Range(0,pieces.Length); i < pieces.Length; i++ ) {
     		if (pieces[i].GetComponent<ShipPieceScript>().GetInPlace()) {
     			target = pieces[i];
     		}
