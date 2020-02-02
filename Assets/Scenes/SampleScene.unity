@@ -7243,10 +7243,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  HealthScript: []
   startingHealth: 100
   currentHealth: 0
-  changeHealth: {fileID: 0}
+  changeHealth: {fileID: 171180039}
 --- !u!4 &1299652697
 Transform:
   m_ObjectHideFlags: 0

@@ -48,6 +48,8 @@ public class PlayerScript : MonoBehaviour
     private GameObject heldObject;
     private Camera camera;
 
+    GameObject hitObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,15 +118,16 @@ public class PlayerScript : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, transform.localRotation * Vector3.forward, out hit, GRABBER_RANGE))
                 {
-                    if (hit.collider.gameObject.CompareTag("shippiece") && !hit.collider.gameObject.GetComponent<ShipPieceScript>().inPlace && !hit.collider.gameObject.GetComponent<ShipPieceScript>().glued)
+                    hitObject = hit.transform.parent.gameObject;
+                    if (hitObject.CompareTag("shippiece") && !hitObject.GetComponent<ShipPieceScript>().inPlace && !hitObject.GetComponent<ShipPieceScript>().glued)
                     {
                     	Debug.Log("Grab hit");
-                        hit.collider.transform.parent = transform.parent;
-                        hit.collider.GetComponent<Rigidbody>().isKinematic = true;
+                        hitObject.transform.parent = transform.parent;
+                        hitObject.GetComponent<Rigidbody>().isKinematic = true;
                         Vector3 newPosition = transform.position;
                         newPosition += transform.forward * holdDistance;
-                        heldObject = hit.collider.gameObject;
-                        hit.collider.transform.position = newPosition;
+                        heldObject = hitObject;
+                        hitObject.transform.position = newPosition;
                         isHolding = true;
                     }
                 }
@@ -253,4 +256,18 @@ public class PlayerScript : MonoBehaviour
             GameOver();
     }
 
+
+    /*
+    if (hit.collider.gameObject.CompareTag("shippiece") && !hit.collider.gameObject.GetComponent<ShipPieceScript>().inPlace && !hit.collider.gameObject.GetComponent<ShipPieceScript>().glued)
+                    {
+                    	Debug.Log("Grab hit");
+                        hit.collider.transform.parent = transform.parent;
+                        hit.collider.GetComponent<Rigidbody>().isKinematic = true;
+                        Vector3 newPosition = transform.position;
+                        newPosition += transform.forward * holdDistance;
+                        heldObject = hit.collider.gameObject;
+                        hit.collider.transform.position = newPosition;
+                        isHolding = true;
+                    }
+     */
 }
