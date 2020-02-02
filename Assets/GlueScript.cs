@@ -5,7 +5,7 @@ using UnityEngine;
 public class GlueScript : MonoBehaviour
 {
     Rigidbody rb;
-    public const float VELOCITY_MODIFIER = 1000f;
+    const float VELOCITY_MODIFIER = 10000f;
     float size;
     bool beingHeld;
     public GameObject hit;
@@ -67,11 +67,5 @@ public class GlueScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         rb.velocity = savedVelocity;
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (!collision.gameObject.CompareTag("shippiece"))
-            savedVelocity = rb.velocity;
     }
 }
