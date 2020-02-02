@@ -239,4 +239,18 @@ public class PlayerScript : MonoBehaviour
         anim.SetTrigger("GameOver");
     }
 
+    public void ReduceRemaining()
+    {
+        remainingPieces--;
+        if (remainingPieces < 1)
+            GameOver();
+    }
+
+    public void IncreaseRemaining()
+    {
+        remainingPieces++;
+        if (remainingPieces < 1)
+            GameOver();
+    }
+
 }
