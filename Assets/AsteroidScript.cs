@@ -70,7 +70,7 @@ public class AsteroidScript : MonoBehaviour
     {
     	Vector3 randomVelocity;
     	randomVelocity = new Vector3(Random.value, Random.value, Random.value);
-        rb.velocity = ((target.transform.position - this.transform.position).normalized + randomVelocity) * VELOCITY_MODIFIER * 5*Random.value;
+        rb.velocity = ((target.transform.position - this.transform.position).normalized + randomVelocity) * VELOCITY_MODIFIER * 2*Random.value;
         rb.angularVelocity = new Vector3(Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER, Random.value * ANGULAR_VELOCITY_MODIFIER);
     }
 

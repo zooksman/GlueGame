@@ -608,7 +608,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afaf063d1a2a5843b741edc347fdc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glueHit: {fileID: 0}
+  grab: {fileID: 0}
+  hurt: {fileID: 0}
+  shipHit: {fileID: 0}
+  fittingTogether: {fileID: 0}
   shoot: {fileID: 8300000, guid: dae5f1181f25084489ae3591f4a92900, type: 3}
+  breaking: {fileID: 0}
 --- !u!82 &112156631
 AudioSource:
   m_ObjectHideFlags: 0
