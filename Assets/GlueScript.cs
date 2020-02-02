@@ -56,7 +56,6 @@ public class GlueScript : MonoBehaviour
         print(hit.tag);
         if (hit.CompareTag("shippiece"))
         {
-            hit.GetComponent<ShipPieceScript>();
             if (hit.GetComponent<ShipPieceScript>().GetInPlace() == false)
             {
                 print("before: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);

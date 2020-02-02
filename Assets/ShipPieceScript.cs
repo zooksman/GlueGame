@@ -8,7 +8,7 @@ public class ShipPieceScript : MonoBehaviour
     Vector3 attatchedPosition;
     float positionDifference;
     float MAX_SNAP_DISTANCE = 7f;
-    public Rigidbody rb;
+    Rigidbody rb;
     const float BREAKING_MAX_VELOCITY = 15f;
     const float ANGULAR_VELOCITY_MODIFIER = 6f;
     const float SPEED_DEGREDATION = 0.997f;
@@ -23,6 +23,7 @@ public class ShipPieceScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         attatched = true;
         playerS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
 
@@ -104,6 +105,13 @@ public class ShipPieceScript : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("collided at: " + Time.deltaTime);
+        if (collision.gameObject.CompareTag("asteroid"))
+            Detatch();
     }
 
 }
