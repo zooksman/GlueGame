@@ -10,7 +10,7 @@ public class GlueScript : MonoBehaviour
     bool beingHeld;
     public GameObject hit;
     bool glued;
-    const float SPEED_DEGREDATION = 0.999f;
+    const float SPEED_DEGREDATION = 0.998f;
     Vector3 savedForce;
 
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class GlueScript : MonoBehaviour
     {
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         //if (glued)
-        //rb.velocity = new Vector3(rb.velocity.x * SPEED_DEGREDATION, rb.velocity.y * SPEED_DEGREDATION, rb.velocity.z * SPEED_DEGREDATION);
+        rb.velocity = new Vector3(rb.velocity.x * SPEED_DEGREDATION, rb.velocity.y * SPEED_DEGREDATION, rb.velocity.z * SPEED_DEGREDATION);
     }
 
     public void SetSize(float s)
@@ -55,7 +55,7 @@ public class GlueScript : MonoBehaviour
             hit.GetComponent<Rigidbody>().transform.parent = GetComponent<Rigidbody>().transform;
             hit.GetComponent<ShipPieceScript>().Glue();
             print("on stick: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);
-            StartCoroutine("ResetVelocity");
+            //StartCoroutine("ResetVelocity");
         }
     }
 
