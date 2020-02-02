@@ -65,7 +65,7 @@ public class GlueScript : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("shippiece"))
+        if (!collision.gameObject.CompareTag("shippiece"))
             savedVelocity = rb.velocity;
     }
 }
