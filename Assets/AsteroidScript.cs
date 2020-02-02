@@ -5,7 +5,7 @@ using UnityEngine;
 public class AsteroidScript : MonoBehaviour
 {
     Rigidbody rb;
-    public const float VELOCITY_MODIFIER = 4f;
+    public const float VELOCITY_MODIFIER = 1f;
     public const float ANGULAR_VELOCITY_MODIFIER = 1f;
     Vector3 preparedVector;
     public const float CLOSEST_DISTANCE_VALUE = 50f;
@@ -52,17 +52,17 @@ public class AsteroidScript : MonoBehaviour
     	}
 
         if(Random.value > 0.5f)
-            preparedVector = new Vector3(Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), target.transform.position.y, target.transform.position.z);
+            preparedVector = new Vector3(Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), preparedVector.y, preparedVector.z);
         else
-            preparedVector = new Vector3(-Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), target.transform.position.y, target.transform.position.z);
+            preparedVector = new Vector3(-Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), preparedVector.y, preparedVector.z);
         if (Random.value > 0.5f)
-            preparedVector = new Vector3(target.transform.position.x, Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), target.transform.position.z);
+            preparedVector = new Vector3(preparedVector.x, Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), preparedVector.z);
         else
-            preparedVector = new Vector3(target.transform.position.x, -Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), target.transform.position.z);
+            preparedVector = new Vector3(preparedVector.x, -Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), preparedVector.z);
         if (Random.value > 0.5f)
-            preparedVector = new Vector3(target.transform.position.x, target.transform.position.y, Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE));
+            preparedVector = new Vector3(preparedVector.x, preparedVector.y, Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE));
         else
-            preparedVector = new Vector3(target.transform.position.x, target.transform.position.y, -Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE));
+            preparedVector = new Vector3(preparedVector.x, preparedVector.y, -Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE));
         transform.position = preparedVector;
     }
 
