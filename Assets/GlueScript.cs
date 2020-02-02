@@ -12,10 +12,12 @@ public class GlueScript : MonoBehaviour
     bool glued;
     const float SPEED_DEGREDATION = 0.998f;
     Vector3 savedForce;
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         glued = false;
         beingHeld = false;
         transform.position = new Vector3(300f,300f,300f);
@@ -26,7 +28,7 @@ public class GlueScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        transform.LookAt(player.transform);
         //if (glued)
         rb.velocity = new Vector3(rb.velocity.x * SPEED_DEGREDATION, rb.velocity.y * SPEED_DEGREDATION, rb.velocity.z * SPEED_DEGREDATION);
     }
@@ -39,7 +41,11 @@ public class GlueScript : MonoBehaviour
 
     public void ShootSelf(Vector3 direction)
     {
-        glued = false;
+        if (glued)
+        {
+            transform.GetComponentInChildren<ShipPieceScript>().Detatch();
+            glued = false;
+        }
         rb.velocity = new Vector3(0,0,0);
         rb.AddForce(direction * VELOCITY_MODIFIER, ForceMode.VelocityChange);
         savedForce = direction * VELOCITY_MODIFIER;
@@ -47,15 +53,20 @@ public class GlueScript : MonoBehaviour
 
     public void OnTriggerEnter(Collider c) {
     	hit = c.gameObject;
-        if (hit.CompareTag("shippiece") && hit.GetComponent<ShipPieceScript>().inPlace == false)
+        print(hit.tag);
+        if (hit.CompareTag("shippiece"))
         {
-            print("before: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);
-            glued = true;
-            hit.GetComponent<Rigidbody>().isKinematic = true;
-            hit.GetComponent<Rigidbody>().transform.parent = GetComponent<Rigidbody>().transform;
-            hit.GetComponent<ShipPieceScript>().Glue();
-            print("on stick: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);
-            //StartCoroutine("ResetVelocity");
+            hit.GetComponent<ShipPieceScript>();
+            if (hit.GetComponent<ShipPieceScript>().GetInPlace() == false)
+            {
+                print("before: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);
+                glued = true;
+                hit.GetComponent<Rigidbody>().isKinematic = true;
+                hit.GetComponent<Rigidbody>().transform.parent = GetComponent<Rigidbody>().transform;
+                hit.GetComponent<ShipPieceScript>().Glue();
+                print("on stick: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);
+                //StartCoroutine("ResetVelocity");
+            }
         }
     }
 

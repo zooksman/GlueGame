@@ -114,8 +114,7 @@ public class PlayerScript : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, transform.localRotation * Vector3.forward, out hit, GRABBER_RANGE))
                 {
-                    hitObject = hit.transform.parent.gameObject;
-                    if (hitObject.CompareTag("shippiece") && !hitObject.GetComponent<ShipPieceScript>().inPlace && !hitObject.GetComponent<ShipPieceScript>().glued)
+                    if (hitObject.CompareTag("shippiece") && !hitObject.GetComponent<ShipPieceScript>().GetInPlace() && !hitObject.GetComponent<ShipPieceScript>().GetGlued())
                     {
                     	Debug.Log("Grab hit");
                         hitObject.transform.parent = transform.parent;
@@ -184,12 +183,15 @@ public class PlayerScript : MonoBehaviour
     {
         if (currentGlue < glue.Length - 1) {
             currentGlue++;
-        } else {
-        	for (int i = 0; i < glue.Length; i++) {
+        }
+        else
+        {
+        	/*for (int i = 0; i < glue.Length; i++)
+            {
         		if (glue[i].transform.childCount > 0) {
         			glue[i].transform.GetChild(0).gameObject.GetComponent<ShipPieceScript>().Detatch();
         		}
-            }
+            }*/
             currentGlue = 0;
         }
         glueBuildup = MINIMUM_GLUE_BUILDUP;
