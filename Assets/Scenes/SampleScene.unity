@@ -608,13 +608,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afaf063d1a2a5843b741edc347fdc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glueHit: {fileID: 0}
-  grab: {fileID: 0}
-  hurt: {fileID: 0}
-  shipHit: {fileID: 0}
-  fittingTogether: {fileID: 0}
+  glueHit: {fileID: 8300000, guid: 5b67d9eb418f1ce4592ce2e924c0453a, type: 3}
+  grab: {fileID: 8300000, guid: 66203abcea0d9554b89384d61615c68b, type: 3}
+  hurt: {fileID: 8300000, guid: 27e3e9bbf9d87104290d2472776bcc5c, type: 3}
+  shipHit: {fileID: 8300000, guid: d59fe17a6dced4d49873dc0ed0324f5c, type: 3}
+  fittingTogether: {fileID: 8300000, guid: b02a445f29e81f04e8b9c5bebf06a977, type: 3}
   shoot: {fileID: 8300000, guid: dae5f1181f25084489ae3591f4a92900, type: 3}
-  breaking: {fileID: 0}
+  breaking: {fileID: 8300000, guid: 9cbae62643f757647a302c3612850695, type: 3}
 --- !u!82 &112156631
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6286,6 +6286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5420e84224e26284ca0ec4199c3b7cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioS: {fileID: 112156630}
 --- !u!136 &1669836800434508073
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6459,6 +6460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5420e84224e26284ca0ec4199c3b7cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioS: {fileID: 112156630}
 --- !u!1 &3644609763706709338
 GameObject:
   m_ObjectHideFlags: 0
@@ -6663,6 +6665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5420e84224e26284ca0ec4199c3b7cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioS: {fileID: 112156630}
 --- !u!23 &6576614113341859410
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6839,6 +6842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5420e84224e26284ca0ec4199c3b7cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioS: {fileID: 112156630}
 --- !u!1001 &8663626184783481879
 PrefabInstance:
   m_ObjectHideFlags: 0

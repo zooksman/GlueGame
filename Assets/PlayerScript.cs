@@ -220,6 +220,7 @@ public class PlayerScript : MonoBehaviour
         changeHealth.text = currentHealth.ToString();
         yield return new WaitForSeconds(1.0f);
         hitstun = false;
+        audioS.PlayHurt();
         if (currentHealth <= 0)
         {
             GameOver();

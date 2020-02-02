@@ -57,6 +57,7 @@ public class GlueScript : MonoBehaviour
         {
             if (hit.GetComponent<ShipPieceScript>().GetInPlace() == false)
             {
+
                 print("before: " + rb.velocity.x + "    " + rb.velocity.y + "    " + rb.velocity.z);
                 glued = true;
                 hit.GetComponent<Rigidbody>().isKinematic = true;

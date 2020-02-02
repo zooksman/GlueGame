@@ -20,6 +20,8 @@ public class ShipPieceScript : MonoBehaviour
 
     PlayerScript playerS;
 
+    public AudioManagerScript audioS;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +66,8 @@ public class ShipPieceScript : MonoBehaviour
     public void Detatch()
     {
         glued = false;
-       
+
+        audioS.PlayBreaking();
         if (attatched)
         {
             rb.isKinematic = false;
@@ -78,6 +81,7 @@ public class ShipPieceScript : MonoBehaviour
 
     public void Attatch()
     {
+        audioS.PlayFittingTogether();
         attatched = true;
         glued = false;
         GetComponent<Rigidbody>().transform.parent = savedParent;
