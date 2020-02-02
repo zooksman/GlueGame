@@ -7,7 +7,7 @@ public class ShipPieceScript : MonoBehaviour
     bool glued;
     Vector3 attatchedPosition;
     float positionDifference;
-    float MAX_SNAP_DISTANCE = 7f;
+    float MAX_SNAP_DISTANCE = 15f;
     Rigidbody rb;
     const float BREAKING_MAX_VELOCITY = 15f;
     const float ANGULAR_VELOCITY_MODIFIER = 6f;
