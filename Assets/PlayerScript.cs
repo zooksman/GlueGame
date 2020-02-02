@@ -183,7 +183,7 @@ public class PlayerScript : MonoBehaviour
         } else {
         	for (int i = 0; i < glue.Length; i++) {
         		if (glue[i].transform.childCount > 0) {
-        			glue[i].transform.GetChild(0).gameObject.GetComponent<ShipPieceScript>().Detach();
+        			glue[i].transform.GetChild(0).gameObject.GetComponent<ShipPieceScript>().Detatch();
         		}
             }
             currentGlue = 0;
