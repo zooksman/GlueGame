@@ -25,7 +25,7 @@ public class ShipPieceScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         attatched = true;
-        playerS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        playerS = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerScript>();
 
         savedParent = transform.parent;
         inPlace = true;
