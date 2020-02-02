@@ -210,13 +210,13 @@ public class PlayerScript : MonoBehaviour
         {
             hitstun = true;
             currentHealth = currentHealth - 50;
-            StartCoroutine("WaitandCheck");
-            changeHealth.text = currentHealth.ToString();
+            StartCoroutine("WaitAndCheck");
         }
     }
     
-    IEnumerator WaitAndCheck()
+    public IEnumerator WaitAndCheck()
     {
+        changeHealth.text = currentHealth.ToString();
         yield return new WaitForSeconds(1.0f);
         hitstun = false;
         if (currentHealth <= 0)
