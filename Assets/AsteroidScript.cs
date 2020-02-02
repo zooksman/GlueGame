@@ -38,7 +38,7 @@ public class AsteroidScript : MonoBehaviour
 
     private void StartingPosition() // has range of 90 to 30 OR -90 to 30
     {
-    	//Vector3 coords = GameObject.FindGameObjectWithTag("shippiece").GetComponent<ShipPieceScript>().getPosition();
+    	Vector3 coords = GameObject.FindGameObjectWithTag("shippiece").GetComponent<ShipPieceScript>().getPosition();
         if(Random.value > 0.5f)
             preparedVector = new Vector3(Random.Range(CLOSEST_DISTANCE_VALUE, FURTHEST_DISTANCE_VALUE), preparedVector.y, preparedVector.z);
         else

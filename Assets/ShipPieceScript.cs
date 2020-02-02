@@ -45,6 +45,11 @@ public class ShipPieceScript : MonoBehaviour
         }
         
     }
+    
+    public Vector3 GetPosition()
+    {
+    	return this.transform.position;
+    }
 
     public bool GetInPlace()
     {
