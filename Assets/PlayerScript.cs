@@ -111,19 +111,25 @@ public class PlayerScript : MonoBehaviour
             {
             if (Input.GetMouseButtonDown(1))
             {   
-
                 if (Physics.Raycast(transform.position, transform.localRotation * Vector3.forward, out hit, GRABBER_RANGE))
                 {
-                    if (hitObject.CompareTag("shippiece") && !hitObject.GetComponent<ShipPieceScript>().GetInPlace() && !hitObject.GetComponent<ShipPieceScript>().GetGlued())
+                    hitObject = hit.transform.gameObject;
+                    if (hitObject.CompareTag("shippiece"))
                     {
-                    	Debug.Log("Grab hit");
-                        hitObject.transform.parent = transform.parent;
-                        hitObject.GetComponent<Rigidbody>().isKinematic = true;
-                        Vector3 newPosition = transform.position;
-                        newPosition += transform.forward * holdDistance;
-                        heldObject = hitObject;
-                        hitObject.transform.position = newPosition;
-                        isHolding = true;
+                        if (!hitObject.GetComponent<ShipPieceScript>().GetInPlace())
+                        {
+                            if (!hitObject.GetComponent<ShipPieceScript>().GetGlued())
+                            {
+                                Debug.Log("Grab hit");
+                                hitObject.transform.parent = transform.parent;
+                                hitObject.GetComponent<Rigidbody>().isKinematic = true;
+                                Vector3 newPosition = transform.position;
+                                newPosition += transform.forward * holdDistance;
+                                heldObject = hitObject;
+                                hitObject.transform.position = newPosition;
+                                isHolding = true;
+                            }
+                        }
                     }
                 }
             }
