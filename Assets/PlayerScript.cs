@@ -59,8 +59,8 @@ public class PlayerScript : MonoBehaviour
         glueBuildup = MINIMUM_GLUE_BUILDUP;
         currentGlue = 0;
         camera = (Camera)GameObject.FindObjectOfType(typeof(Camera));
-        changeHealth = GetComponent<Text>();
-        changeHealth.text = currentHealth.ToString();
+        //changeHealth = GetComponent<Text>();
+        //changeHealth.text = currentHealth.ToString();
     }
 
     void Awake()
